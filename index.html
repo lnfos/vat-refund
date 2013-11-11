@@ -1,0 +1,202 @@
+<html>
+
+<head>
+<style>
+body{
+	font-family:arial;
+	font-size:12px;
+}
+</style>
+<script type="text/javascript">
+ var Country="";
+ var LocalRate=0;
+ var RecoveryRate=0;
+ 
+
+
+function setOptions(chosen, selbox) {
+
+
+selbox.options.length = 0;
+if (chosen == " ") {
+  selbox.options[selbox.options.length] = new Option('Please select one of the options above first',' ');
+setTimeout(setOptions(' ',document.myform.optthree),5);
+}
+
+if (chosen == "1") {
+  selbox.options[selbox.options.length] = new Option('Hotel / Accommodation','11');
+  selbox.options[selbox.options.length] = new Option('Food, drink and restaurant services','12');
+  selbox.options[selbox.options.length] = new Option('Hiring of means of transport','13');
+
+selbox.options[selbox.options.length] = new Option('Travel expenses, such as taxi fares, public transport fares','14');
+  selbox.options[selbox.options.length] = new Option('Fuel, public transport fares','15');
+  selbox.options[selbox.options.length] = new Option('Admissions to fairs and exhibitions','16');
+  
+  setTimeout(setOptions('11',document.myform.optthree),5);
+
+}
+
+
+if (chosen == "11") {
+  Country="Luxembourg";
+  LocalRate=0.03;
+  RecoveryRate=1;
+  selbox.options[selbox.options.length] = new Option('Recovery 11','Hotel / Accommodation');
+  
+}
+
+
+if (chosen == "12") {
+	Country="Luxembourg";
+	LocalRate=0.03;
+	RecoveryRate=1;
+  selbox.options[selbox.options.length] = new Option('Recovery 12','Food, drink and restaurant services');
+
+  
+}
+
+if (chosen == "13") {
+	Country="Luxembourg";
+	LocalRate=0.15;
+	RecoveryRate=1;
+  selbox.options[selbox.options.length] = new Option('Recovery 13','Hiring of means of transport');
+
+  
+}
+
+
+if (chosen == "14") {
+	Country="Luxembourg";
+	LocalRate=0.03;
+	RecoveryRate=1;
+  selbox.options[selbox.options.length] = new Option('Recovery 14','Travel expenses, such as taxi fares, public transport fares');
+
+  
+}
+
+if (chosen == "15") {
+	Country="Luxembourg";
+	LocalRate=0.15;
+	RecoveryRate=1;
+  selbox.options[selbox.options.length] = new Option('Recovery 15','Fuel, public transport fares');
+
+  
+}
+
+if (chosen == "16") {
+	Country="Luxembourg";
+	LocalRate=0.15;
+	RecoveryRate=1;
+  selbox.options[selbox.options.length] = new Option('Recovery 16','Admissions to fairs and exhibitions');
+
+  
+}
+}
+</script>
+
+
+</head>
+
+<body>
+
+
+<form name="myform">
+<TABLE border=1 cellSpacing=0 borderColor="#cccccc" cellPadding="3" width="470px">
+<TBODY>
+<TR align="center" borderColor="#667caf" bgColor="#00257a">
+<TD colspan="2"><STRONG><FONT color=#ffffff>VAT refund Calculator</FONT></STRONG></TD></TR>
+<TR vAlign=top borderColor="#667caf" bgColor="#b2bdd7">
+    <TD width="210px"style="border:none;">
+    
+    Please select a country:
+    
+    </TD>
+    <td style="border:none;"> 
+    
+
+         <select name="optone" size="1"
+         onchange="setOptions(document.myform.optone.options
+        [document.myform.optone.selectedIndex].value,
+        document.myform.opttwo);">
+         <option value="" selected="selected">Please select a country </option>
+         <option value="1">Luxembourg</option>
+         <option value="2">Belgium</option>
+         <option value="3">France</option>
+        </select>
+    </td>
+</TR>
+
+
+
+<TR vAlign="top" borderColor="#b2c2dd" bgColor="#d8e0ee">
+    <TD width="210px" style="border:none;">
+    
+    
+                Expense type:
+    
+    </TD>
+    
+    <td style="border:none;">
+        <select style="width:165px;" name="opttwo" size="1"
+    onchange="setOptions(document.myform.opttwo.options
+    [document.myform.opttwo.selectedIndex].value,
+    document.myform.optthree);">
+     <option value=" " selected="selected"></option>
+     </select>
+      <select style="display:none;"name="optthree" size="1">
+     <option value=" " selected="selected"></option>
+     </select>
+    </td>
+</TR>
+
+<TR vAlign=top borderColor="#667caf" bgColor="#b2bdd7">
+    <TD width="210px" style="border:none;">
+    
+    
+                Amount:
+     
+    
+    </TD>
+     <td style="border:none;">
+<input type="text" name="amount" size="15" onKeypress="if(event.keyCode < 46 || event.keyCode > 57) event.returnValue = false; if(event.keyCode == 47) event.returnValue = false; if(event.which < 46 || event.which > 57) return false;" /> euros
+    </td>
+
+</TR>   
+
+<TR vAlign="top" borderColor="#b2c2dd" bgColor="#d8e0ee">
+    <TD width="210px" style="border:none;">
+    
+    
+                Total
+    
+    </TD>
+    
+    <td style="border:none;">
+       <input type="button" name="go" value="Calculate"
+
+ onclick="document.write(
+   '<TABLE style=\'font-family:arial;font-size:14px;\' border=1 cellSpacing=0 borderColor=#cccccc cellPadding=3 width=470px><TBODY><TR align=center borderColor=#667caf bgColor=#00257a><TD colspan=2><STRONG><FONT color=#ffffff>VAT refund Calculator</FONT></STRONG></TD></TR><TR vAlign=top borderColor=#667caf bgColor=#b2bdd7><TD width=210px style=border:none;>Country selected:</TD><td style=border:none;>' + Country + '</td></TR><TR vAlign=top borderColor=#b2c2dd bgColor=#d8e0ee><TD width=210px style=border:none;>Expense type:</TD><td style=border:none;>'+document.myform.optthree.options.value+'</td></TR><TR vAlign=top borderColor=#667caf bgColor=#b2bdd7><TD width=210px  style=border:none;>Amount:</TD><td style=border:none;>'+document.myform.amount.value+' euros</td></TR><TR vAlign=top borderColor=#b2c2dd bgColor=#d8e0ee><TD width=210px style=border:none;><strong><br />TOTAL:</strong></TD><td style=border:none;><br /><strong>'+(Math.round((document.myform.amount.value/(1+LocalRate)*LocalRate*RecoveryRate)*100)/100)+' euros</strong></td></TR></TBODY></TABLE><br /><input type=\'button\' value=\'Restart\' onClick=\'history.go(0)\' />')">
+    </td>
+</TR>         
+                         
+</TBODY></TABLE>
+<br />
+
+
+
+
+
+</form>
+
+
+
+
+
+
+
+  
+ 
+ 
+
+</body>
+</html>
